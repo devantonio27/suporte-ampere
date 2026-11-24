@@ -7,6 +7,7 @@ dependencies = [
     "langchain-core",
     "langchain-openai",
     "langchain-groq",
+    "langgraph>=1.2.24",
 ]
 
 [dependency-groups]
