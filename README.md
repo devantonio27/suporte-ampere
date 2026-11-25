@@ -54,7 +54,7 @@ Git, [Docker](https://www.docker.com/products/docker-desktop/) (Docker Desktop p
 ### Instalação
 
 ```bash
-git clone https://github.com/<seu-usuario>/suporte-ampere.git
+git clone https://github.com/devantonio27/suporte-ampere.git
 cd suporte-ampere
 uv sync --project backend
 ```
