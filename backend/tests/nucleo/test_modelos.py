@@ -1,4 +1,5 @@
 import pytest
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 
@@ -18,6 +19,15 @@ def test_modelos_falsos_respondem_sem_rede(papel):
     assert isinstance(modelo, ModeloFalso)
     resposta = modelo.invoke("oi")
     assert papel.value in resposta.content
+
+
+def test_gemini_como_provedor_do_gerador():
+    cfg = config(
+        provedor_gerador="gemini",
+        modelo_gerador="qualquer-id",
+        google_api_key="chave-de-teste",
+    )
+    assert isinstance(criar_modelo(Papel.GERADOR, cfg), ChatGoogleGenerativeAI)
 
 
 def test_provedor_padrao_do_gerador_e_openai():
@@ -41,7 +51,12 @@ def test_config_le_variaveis_de_ambiente(monkeypatch):
 @pytest.mark.integration
 def test_gerador_real_responde():
     cfg = Config()
-    if not cfg.openai_api_key:
-        pytest.skip("sem OPENAI_API_KEY no .env")
+    chaves = {
+        "openai": cfg.openai_api_key,
+        "groq": cfg.groq_api_key,
+        "gemini": cfg.google_api_key,
+    }
+    if not chaves[cfg.provedor_gerador]:
+        pytest.skip(f"sem chave para o provedor {cfg.provedor_gerador}")
     resposta = criar_modelo(Papel.GERADOR, cfg).invoke("Diga oi em 3 palavras")
     assert resposta.content
