@@ -9,8 +9,8 @@ Chatbot de suporte ao cliente construído passo a passo com **LangGraph**, para 
 | Etapa | Conteúdo                                                          | Status |
 | ----- | ----------------------------------------------------------------- | ------ |
 | 0     | Fundação: config tipada, fábrica de modelos por papel, testes, CI | ✅     |
-| 1     | Grafo mínimo com LangGraph (estado e nó gerador)                  | 🚧     |
-| 2     | RAG: chunking, embeddings, Qdrant, busca híbrida                  | ⬜     |
+| 1     | Grafo mínimo com LangGraph (estado e nó gerador)                  | ✅     |
+| 2     | RAG: chunking, embeddings, Qdrant, busca híbrida                  | 🚧     |
 | 3     | Roteador de intenção                                              | ⬜     |
 | 4     | Agente com Ações (tool calling)                                   | ⬜     |
 | 5     | Humano no circuito (aprovação de reembolsos)                      | ⬜     |

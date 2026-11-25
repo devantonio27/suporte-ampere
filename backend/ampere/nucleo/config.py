@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-Provedor = Literal["openai", "groq"]
+Provedor = Literal["openai", "groq", "gemini"]
 
 
 class Config(BaseSettings):
@@ -14,6 +14,7 @@ class Config(BaseSettings):
     modelos_falsos: bool = False
     openai_api_key: str = ""
     groq_api_key: str = ""
+    google_api_key: str = ""
 
     provedor_gerador: Provedor = "openai"
     modelo_gerador: str = "gpt-6-luna"
